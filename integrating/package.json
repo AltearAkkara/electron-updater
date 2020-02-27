@@ -1,0 +1,79 @@
+{
+  "name": "test-electron-builder",
+  "version": "0.1.2",
+  "description": "A minimal Electron application written with Typescript",
+  "scripts": {
+    "build": "tsc",
+    "build:prod": "tsc && yarn copy:package && yarn install:prod",
+    "copy:package": "copyfiles -u 1 src/package.json build",
+    "install:prod": "cd build && yarn --prod",
+    "clean": "rimraf build dist",
+    "clean:build": "rimraf build",
+    "clean:dist": "rimraf dist",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "npm run build && electron ./dist/main.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "publish": "build -p always"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo",
+    "typescript"
+  ],
+  "author": "Sutthinart Khunvadhana <sutthinart.khunvadhana@refinitiv.com>",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@types/node": "^13.7.4",
+    "electron": "^6.0.8",
+    "electron-builder": "^22.3.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.0"
+  },
+  "config": {
+    "electron": {
+      "mirror": "https://bams-aws.refinitiv.com/artifactory/default.npm.global/UniversalContainer/electron-releases/"
+    }
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080/"
+      }
+    ],
+    "appId": "com.refinitiv.real",
+    "productName": "Installer",
+    "directories": {
+      "buildResources": "resources",
+      "app": "build",
+      "output": "dist"
+    },
+    "files": [
+      {
+        "from": "./build/node_modules",
+        "to": "build/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      },
+      "**/*",
+      "!yarn.lock"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "installerIcon.ico"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "electron-updater": "^4.2.2"
+  }
+}

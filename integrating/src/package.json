@@ -1,0 +1,11 @@
+{
+  "name": "test-electron-builder",
+  "version": "0.1.1",
+  "author": "Sutthinart Khunvadhana <sutthinart.khunvadhana@refinitiv.com>",
+  "description": "A minimal Electron application written with Typescript",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "electron-updater": "^4.2.2"
+  },
+  "repository": "https://git.sami.int.thomsonreuters.com/universalcontainer/real.git"
+}
