@@ -29,7 +29,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "@types/node": "^13.7.4",
-    "electron": "^6.0.8",
+    "electron": "^9.4.0",
     "electron-builder": "^22.3.2",
     "tslint": "^5.19.0",
     "typescript": "^3.6.0"
